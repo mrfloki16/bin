@@ -1,0 +1,27 @@
+#!/bin/bash
+# Author: mr_floki
+# Date Created: 03/03/2021
+# Description: cat recursive
+# Date Modified: 03/03/2021
+
+function cat_rec {
+	for arg in "$@"; do 
+		if [[ -f $arg ]]; then
+			cat $arg
+		elif [ -z "$(ls -A $arg/)" ]; then
+			true
+		else
+			for i in $arg/*; do
+				if [[ -f $i ]]; then
+					cat $i
+				else
+					cat_rec $i
+				fi
+			done
+		fi
+	done
+}
+
+cat_rec "$@"
+echo
+echo "Number of line: `cat_rec "$@" | wc -l`"

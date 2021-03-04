@@ -1,0 +1,7 @@
+#!/bin/bash
+# Author: mr_floki
+# Date Created: 02/03/2021
+# Description: print the path of the login session
+# Date Modified: 02/03/2021
+
+echo $PATH | awk -v RS=":" '{print}'

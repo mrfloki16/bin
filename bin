@@ -1,0 +1,13 @@
+#!/bin/bash
+# Author: mr_floki
+# Date Created: 02/03/2021
+# Description: check for binaries
+# Date Modified: 03/03/2021
+
+for bin in `path`
+do
+	if [ `ls $bin | grep $1 | wc -l` -gt 0 ]
+	then
+		echo $bin: `ls $bin | grep --color=always $1`
+	fi
+done
